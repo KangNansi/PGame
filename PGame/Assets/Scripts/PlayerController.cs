@@ -16,4 +16,6 @@ public abstract class PlayerController : MonoBehaviour
 
     public virtual void B() { }
     public virtual void BUp() { }
+
+    public virtual void C() { }
 }

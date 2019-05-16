@@ -35,6 +35,11 @@ public class PlayerManager : MonoBehaviour
             {
                 currentController.BUp();
             }
+
+            if (Input.GetButtonDown("Fire3"))
+            {
+                currentController.C();
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ public class BasicController : PlayerController
     public Collider2D groundCheck;
     public SpriteRenderer spriteRenderer;
 
+    public Weapon weapon;
+
     public Animator animator;
     private int isWalkingParam;
     private int isRollingParam;
@@ -34,7 +36,8 @@ public class BasicController : PlayerController
             if (isWalking)
             {
                 animator.speed = Mathf.Max(0.3f, Mathf.Abs(Mathf.Sin(h * 3.14f * 0.5f)));
-                spriteRenderer.flipX = h < 0f;
+                transform.localScale = new Vector3(h < 0f ? -1 : 1, 1, 1);
+                //spriteRenderer.flipX = h < 0f;
             }
         }
         else
@@ -66,5 +69,10 @@ public class BasicController : PlayerController
         isRolling = false;
         transform.localRotation = Quaternion.identity;
         body.freezeRotation = true;
+    }
+
+    public override void C()
+    {
+        weapon.Shoot();
     }
 }
