@@ -5,8 +5,11 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody2D body;
     public float speed;
+    public float hitValue;
     public Vector2 direction;
     public ParticleSystem destroyParticle;
+
+    public LayerMask hitLayer;
 
     private void Start()
     {
@@ -25,5 +28,14 @@ public class Bullet : MonoBehaviour
         ParticleSystem particle = Instantiate(destroyParticle);
         particle.transform.position = transform.position;
         Destroy(gameObject);
+
+        if ((collision.gameObject.layer & hitLayer) != 0)
+        {
+            Life life = collision.GetComponent<Life>();
+            if(life != null)
+            {
+                life.Hit(hitValue);
+            }
+        }
     }
 }

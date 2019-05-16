@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Editor\Level\LevelEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\Level\RandomTileEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\PropertyDrawers\FloatRangeDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\Utils\EditorBase.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
