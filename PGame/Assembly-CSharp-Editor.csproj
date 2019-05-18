@@ -60,7 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Editor\Level\LevelEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\Level\FollowCameraEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\Level\RandomTileEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\PropertyDrawers\FloatRangeDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\Utils\EditorBase.cs" />
