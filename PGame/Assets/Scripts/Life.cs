@@ -9,6 +9,11 @@ public class Life : MonoBehaviour
     
     public event Action onDie;
 
+    private void Start()
+    {
+        currentLife = maxLife;
+    }
+
     public void Hit(float value)
     {
         currentLife -= value;

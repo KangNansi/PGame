@@ -133,6 +133,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 2586418793332234644}
   speed: 13
+  hitValue: 1
   direction: {x: 0, y: 0}
   destroyParticle: {fileID: 4276636689433248475, guid: 4b36ab73aabacb34aae31dfaa7f5efcb,
     type: 3}
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 1024

@@ -18,8 +18,8 @@ TagManager:
   - Enemy
   - PlayerBullet
   - EnemyBullet
-  - 
-  - 
+  - Entity
+  - Ground
   - 
   - 
   - 
