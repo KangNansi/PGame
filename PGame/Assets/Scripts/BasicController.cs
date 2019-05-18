@@ -5,6 +5,7 @@ public class BasicController : PlayerController
 {
     public Rigidbody2D body;
     public Collider2D groundCheck;
+    public Collider2D colBox;
     public SpriteRenderer spriteRenderer;
 
     public Weapon weapon;
@@ -28,10 +29,28 @@ public class BasicController : PlayerController
 
     private void FixedUpdate()
     {
+        ContactPoint2D[] contacts = new ContactPoint2D[4];
+        int contactCount = colBox.GetContacts(contacts);
+        float vx = h * speed;
+        for (int i = 0; i < contactCount; i++)
+        {
+            ContactPoint2D contact = contacts[i];
+            if (Vector2.Dot(Vector2.right, contact.normal) > 0.5 && vx < 0)
+            {
+                vx = 0;
+            }
+            else if (Vector2.Dot(Vector2.left, contact.normal) > 0.5 && vx > 0)
+            {
+                vx = 0;
+            }
+        }
+
         if (!isRolling)
         {
-            body.velocity = new Vector2(h * speed, body.velocity.y);
-            bool isWalking = Mathf.Abs(body.velocity.x) > 0.0001f && groundCheck.IsTouchingLayers();
+            
+
+            body.velocity = new Vector2(vx, body.velocity.y);
+            bool isWalking = Mathf.Abs(h) > 0.0001f && groundCheck.IsTouchingLayers();
             animator.SetBool(isWalkingParam, isWalking);
             if (isWalking)
             {
