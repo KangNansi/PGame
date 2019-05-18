@@ -182,7 +182,7 @@ MonoBehaviour:
   weapon: {fileID: 1205502795194220702}
   animator: {fileID: 8804265368947010184}
   speed: 5
-  jumpForce: 5
+  jumpForce: 8
   rollSpeed: 10
   rollSpeedGain: 10
 --- !u!95 &8804265368947010184

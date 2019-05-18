@@ -63,9 +63,6 @@
     <Compile Include="Assets\Scripts\BasicController.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Enemy\JumpingPlant.cs" />
-    <Compile Include="Assets\Scripts\Level\Level.cs" />
-    <Compile Include="Assets\Scripts\Level\LevelBlock.cs" />
-    <Compile Include="Assets\Scripts\Level\LevelChunk.cs" />
     <Compile Include="Assets\Scripts\Level\RandomTile.cs" />
     <Compile Include="Assets\Scripts\Life.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />

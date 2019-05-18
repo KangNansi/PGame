@@ -47,8 +47,6 @@ public class BasicController : PlayerController
 
         if (!isRolling)
         {
-            
-
             body.velocity = new Vector2(vx, body.velocity.y);
             bool isWalking = Mathf.Abs(h) > 0.0001f && groundCheck.IsTouchingLayers();
             animator.SetBool(isWalkingParam, isWalking);
@@ -56,7 +54,6 @@ public class BasicController : PlayerController
             {
                 animator.speed = Mathf.Max(0.3f, Mathf.Abs(Mathf.Sin(h * 3.14f * 0.5f)));
                 transform.localScale = new Vector3(h < 0f ? -1 : 1, 1, 1);
-                //spriteRenderer.flipX = h < 0f;
             }
         }
         else
