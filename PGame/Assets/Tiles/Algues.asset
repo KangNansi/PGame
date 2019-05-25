@@ -9,28 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 11500000, guid: e9098b1370e004e4ea9e7ab0e15282f6, type: 3}
   m_Name: Algues
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
-  m_ColliderType: 1
+  colliderType: 0
+  animationSpeed: 5
+  color: {r: 1, g: 1, b: 1, a: 1}
+  sprites:
+  - {fileID: -3244905746332740242, guid: d827435808b88f145b39294d10be4cf2, type: 3}
+  - {fileID: 3939024124504367694, guid: d827435808b88f145b39294d10be4cf2, type: 3}
+  - {fileID: -4334048380593244183, guid: d827435808b88f145b39294d10be4cf2, type: 3}
+  - {fileID: -5538818699262629855, guid: d827435808b88f145b39294d10be4cf2, type: 3}
+  - {fileID: 2100209196395473832, guid: d827435808b88f145b39294d10be4cf2, type: 3}
+  - {fileID: 1192138219283030332, guid: d827435808b88f145b39294d10be4cf2, type: 3}
+  - {fileID: 2760725387760582600, guid: d827435808b88f145b39294d10be4cf2, type: 3}

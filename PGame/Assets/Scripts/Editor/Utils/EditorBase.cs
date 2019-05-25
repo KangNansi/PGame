@@ -5,7 +5,7 @@ public class EditorBase<T> : Editor where T : class
 {
     protected T self;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         self = target as T;
     }

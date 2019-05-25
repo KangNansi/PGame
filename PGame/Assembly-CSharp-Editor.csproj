@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Editor\Level\FollowCameraEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\Level\RandomTileEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\Level\Tiles\RuleTileEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\PropertyDrawers\FloatRangeDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\Utils\EditorBase.cs" />
     <Reference Include="UnityEditor.TestRunner">
@@ -72,9 +73,6 @@
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.PixelPerfect.Editor">
-      <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
@@ -105,9 +103,6 @@
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.PixelPerfect">
-      <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
