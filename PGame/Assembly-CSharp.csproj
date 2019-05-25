@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{E144F0E8-4E2E-B15C-6DE8-6B0BB6ADAF26}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -64,18 +63,28 @@
     <Compile Include="Assets\Scripts\BasicController.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Enemy\JumpingPlant.cs" />
+    <Compile Include="Assets\Scripts\Enemy\MaskedShooter\MaskedShooter.cs" />
+    <Compile Include="Assets\Scripts\Enemy\MaskedShooter\States\Idle.cs" />
+    <Compile Include="Assets\Scripts\Enemy\MaskedShooter\States\Run.cs" />
     <Compile Include="Assets\Scripts\Level\RandomTile.cs" />
     <Compile Include="Assets\Scripts\Level\Tiles\AnimatedTile.cs" />
     <Compile Include="Assets\Scripts\Level\Tiles\RuleTile.cs" />
     <Compile Include="Assets\Scripts\Life.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
+    <Compile Include="Assets\Scripts\Utils\AnimatorParameter.cs" />
     <Compile Include="Assets\Scripts\Utils\FloatRange.cs" />
+    <Compile Include="Assets\Scripts\Utils\StateMachine\State.cs" />
+    <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachineTransition.cs" />
     <Compile Include="Assets\Scripts\Utils\Timer.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
@@ -110,6 +119,9 @@
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
@@ -133,12 +145,6 @@
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0a3/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
