@@ -6,6 +6,8 @@ public class MaskedShooter : MonoBehaviour
 {
     public Animator animator;
     public Rigidbody2D body;
+    public Collider2D fallChecker;
+    public LayerMask groundLayer;
 
     public AnimatorParameter runParam;
 
@@ -20,7 +22,7 @@ public class MaskedShooter : MonoBehaviour
         machine = new StateMachine();
 
         Idle idle = new Idle(minIdleWait, maxIdleWait);
-        Run run = new Run(runParam, body, runSpeed);
+        Run run = new Run(runParam, body, fallChecker, groundLayer, runSpeed, transform.position.x);
 
         machine.transitions.Add(new StateMachineTransition(idle, run, null));
         machine.transitions.Add(new StateMachineTransition(run, idle, null));

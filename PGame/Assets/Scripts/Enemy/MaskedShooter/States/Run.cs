@@ -7,35 +7,42 @@ namespace MaskedShooterStates
     {
         private AnimatorParameter runParam;
         private Rigidbody2D body;
+        private Collider2D fallChecker;
+        private LayerMask groundLayer;
         private float speed;
+        private float xTarget;
 
         private Timer timer;
         private float direction;
 
-        public Run(AnimatorParameter runParam, Rigidbody2D body, float speed)
+        public Run(AnimatorParameter runParam, Rigidbody2D body, Collider2D fallChecker, LayerMask groundLayer, float speed, float xTarget)
         {
             this.runParam = runParam;
             this.body = body;
             this.speed = speed;
+            this.fallChecker = fallChecker;
+            this.groundLayer = groundLayer;
+            this.xTarget = xTarget;
         }
 
         public override void Start()
         {
             base.Start();
-            runParam.SetBool(true);
+            
             timer.Restart();
-            direction = Random.Range(0, 2) == 0 ? -1 : 1;
+            direction = body.transform.position.x > xTarget ? -1 : 1;
             body.transform.localScale = new Vector3(direction, 1, 1);
         }
 
         public override void Update()
         {
-            body.velocity = new Vector2(direction * speed, body.velocity.y);
-            Debug.Log(body.velocity);
-            if(timer.Elapsed > 1.5f)
+            if (timer.Elapsed > 1.5f || !fallChecker.IsTouchingLayers(groundLayer))
             {
                 Stop();
+                return;
             }
+            runParam.SetBool(true);
+            body.velocity = new Vector2(direction * speed, body.velocity.y);
         }
 
         public override void End()

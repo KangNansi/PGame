@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Camera\FollowCamera.cs" />
     <Compile Include="Assets\Scripts\Enemy\JumpingPlant.cs" />
     <Compile Include="Assets\Scripts\Enemy\MaskedShooter\MaskedShooter.cs" />
+    <Compile Include="Assets\Scripts\Enemy\MaskedShooter\States\Attack.cs" />
     <Compile Include="Assets\Scripts\Enemy\MaskedShooter\States\Idle.cs" />
     <Compile Include="Assets\Scripts\Enemy\MaskedShooter\States\Run.cs" />
     <Compile Include="Assets\Scripts\Level\RandomTile.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Utils\AnimatorParameter.cs" />
     <Compile Include="Assets\Scripts\Utils\FloatRange.cs" />
+    <Compile Include="Assets\Scripts\Utils\Interaction\Detector2D.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\State.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachineTransition.cs" />
