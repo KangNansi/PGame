@@ -144,10 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75344c858cc29f9429daacf1579b4e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 0
-  b: 0
-  c: 0
+  debug: 0
   body: {fileID: 8804265368947010186}
+  sprite: {fileID: 8804265369071905276}
   ground: {fileID: 4325584842707206236}
   weapon: {fileID: 1205502795194220702}
   life: {fileID: 2895199756250447631}
@@ -160,7 +159,7 @@ MonoBehaviour:
   jumpForce: 5
   jumpAddedForce: 40
   jumpAddTime: 0.4
-  hitForce: 5
+  hitForce: {x: 0, y: 0}
 --- !u!50 &8804265368947010186
 Rigidbody2D:
   serializedVersion: 4

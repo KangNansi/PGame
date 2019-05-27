@@ -8,6 +8,7 @@ public class BasicController : PlayerController
     public bool debug;
 
     public Rigidbody2D body;
+    public SpriteRenderer sprite;
 
     // Detectors
     public PointDetector2D ground;
@@ -46,17 +47,17 @@ public class BasicController : PlayerController
         Idle idle = new Idle(body);
         run = new Run(isWalkingParam, body, speed);
         air = new Air(isFallingParam, body, speed);
-        hit = new Hit(body, life, hitForce);
+        hit = new Hit(body, sprite, life, hitForce);
 
         machine.transitions.Add(new StateMachineTransition<BaseState>(idle, run, () => Mathf.Abs(h) > 0.05f));
         machine.transitions.Add(new StateMachineTransition<BaseState>(run, idle, () => Mathf.Abs(h) <= 0.05f));
 
         machine.transitions.Add(new StateMachineTransition<BaseState>(idle, air, () => !ground.IsOverlapped));
-        machine.transitions.Add(new StateMachineTransition<BaseState>(air, idle, () => ground.IsOverlapped && Mathf.Abs(h) <= 0.05f && body.velocity.y < 0));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(air, idle, () => ground.IsOverlapped && Mathf.Abs(h) <= 0.05f));
         machine.transitions.Add(new StateMachineTransition<BaseState>(run, air, () => !ground.IsOverlapped));
-        machine.transitions.Add(new StateMachineTransition<BaseState>(air, run, () => ground.IsOverlapped && Mathf.Abs(h) > 0.05f && body.velocity.y < 0));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(air, run, () => ground.IsOverlapped && Mathf.Abs(h) > 0.05f));
 
-        machine.transitions.Add(new StateMachineTransition<BaseState>(hit, idle, () => ground.IsOverlapped && body.velocity.y <= 0));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(hit, idle, () => ground.IsOverlapped && hit.Elapsed > 0.5f));
 
         machine.SetState(idle);
 
@@ -101,13 +102,16 @@ public class BasicController : PlayerController
     private void FixedUpdate()
     {
         // Jump control
-        if (jumpTimer.Elapsed < jumpAddTime && aDown)
+        if(machine.Current.CanJump)
         {
-            body.AddForce(Vector2.up * jumpAddedForce * (jumpAddTime - jumpTimer.Elapsed), ForceMode2D.Force);
-        }
-        else if(ground.LastOverlapped < 0.2f && jumpTimer.Elapsed > 0.4f && a < 0.2f)
-        {
-            Jump();
+            if (jumpTimer.Elapsed < jumpAddTime && aDown)
+            {
+                body.AddForce(Vector2.up * jumpAddedForce * (jumpAddTime - jumpTimer.Elapsed), ForceMode2D.Force);
+            }
+            else if (ground.LastOverlapped < 0.2f && jumpTimer.Elapsed > 0.4f && a < 0.2f)
+            {
+                Jump();
+            }
         }
     }
 

@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 2261436225941796441}
   - component: {fileID: 4975226500790015873}
   - component: {fileID: 1025795760559862639}
+  - component: {fileID: -7357323979237901453}
   m_Layer: 0
   m_Name: MaskedShooter
   m_TagString: Untagged
@@ -385,3 +386,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-7357323979237901453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7293186545964079137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07755dc2c035e8c449af622ae48d4e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0.5

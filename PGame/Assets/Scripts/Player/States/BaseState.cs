@@ -8,6 +8,7 @@ namespace PlayerStates
         public float h;
         public bool ControlFacingDirection { get; protected set; }
         public float facingDirection = 1;
+        public bool CanJump = true;
     }
 }
 

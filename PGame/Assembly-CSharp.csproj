@@ -85,6 +85,15 @@
     <Compile Include="Assets\Scripts\Utils\Interaction\Detector2D.cs" />
     <Compile Include="Assets\Scripts\Utils\Interaction\Hitter.cs" />
     <Compile Include="Assets\Scripts\Utils\Interaction\PointDetector2D.cs" />
+    <Compile Include="Assets\Scripts\Utils\Maths\Ease.cs" />
+    <Compile Include="Assets\Scripts\Utils\Screen\DestroyWhenLeaveScreen.cs" />
+    <Compile Include="Assets\Scripts\Utils\Screen\InactiveWhenLeaveScreen.cs" />
+    <Compile Include="Assets\Scripts\Utils\Screen\ScreenManager.cs" />
+    <Compile Include="Assets\Scripts\Utils\ScriptMachine\LonelyScript.cs" />
+    <Compile Include="Assets\Scripts\Utils\ScriptMachine\ScriptMachine.cs" />
+    <Compile Include="Assets\Scripts\Utils\ScriptMachine\Scripts\Sprite\SpriteBlink.cs" />
+    <Compile Include="Assets\Scripts\Utils\ScriptMachine\Scripts\Sprite\SpriteColorModifier.cs" />
+    <Compile Include="Assets\Scripts\Utils\ScriptMachine\Scripts\Sprite\SpriteScripts.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\State.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachineTransition.cs" />

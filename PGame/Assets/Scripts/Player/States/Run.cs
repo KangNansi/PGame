@@ -20,12 +20,13 @@ namespace PlayerStates
         public override void Start()
         {
             base.Start();
-            isWalkingParam.SetBool(true);
+            
         }
 
         public override void Update()
         {
             base.Update();
+            isWalkingParam.SetBool(true);
             body.velocity = new Vector2(h * speed, body.velocity.y);
         }
 
