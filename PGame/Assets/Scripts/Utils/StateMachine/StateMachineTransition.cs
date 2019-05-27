@@ -2,13 +2,13 @@
 using System.Collections;
 using System;
 
-public class StateMachineTransition
+public class StateMachineTransition<T> where T : State
 {
     public Func<bool> condition;
-    public State source;
-    public State target;
+    public T source;
+    public T target;
 
-    public StateMachineTransition(State source, State target, Func<bool> condition)
+    public StateMachineTransition(T source, T target, Func<bool> condition)
     {
         this.source = source;
         this.target = target;

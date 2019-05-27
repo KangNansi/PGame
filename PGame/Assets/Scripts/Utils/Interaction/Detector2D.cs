@@ -16,7 +16,6 @@ public class Detector2D : MonoBehaviour
     void Update()
     {
         EntityCount = trigger.OverlapCollider(filter, entities);
-        Debug.Log(EntityCount);
     }
 
     

@@ -14,18 +14,18 @@ public class MaskedShooter : MonoBehaviour
     public float minIdleWait, maxIdleWait;
     public float runSpeed;
 
-    private StateMachine machine;
+    private StateMachine<State> machine;
 
     private void Initialize()
     {
         runParam.Initialize(animator);
-        machine = new StateMachine();
+        machine = new StateMachine<State>();
 
         Idle idle = new Idle(minIdleWait, maxIdleWait);
         Run run = new Run(runParam, body, fallChecker, groundLayer, runSpeed, transform.position.x);
 
-        machine.transitions.Add(new StateMachineTransition(idle, run, null));
-        machine.transitions.Add(new StateMachineTransition(run, idle, null));
+        machine.transitions.Add(new StateMachineTransition<State>(idle, run, null));
+        machine.transitions.Add(new StateMachineTransition<State>(run, idle, null));
 
         machine.SetState(idle);
     }

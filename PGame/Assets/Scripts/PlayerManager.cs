@@ -23,13 +23,24 @@ public class PlayerManager : MonoBehaviour
             h = Input.GetAxis("Horizontal");
             v = Input.GetAxis("Vertical");
             currentController.SetAxis(h, v);
+
+            currentController.a += Time.deltaTime;
+            currentController.b += Time.deltaTime;
+            currentController.c += Time.deltaTime;
+
+            currentController.aDown = Input.GetButton("Fire1");
+            currentController.bDown = Input.GetButton("Fire2");
+            currentController.cDown = Input.GetButton("Fire3");
+
             if (Input.GetButtonDown("Fire1"))
             {
                 currentController.A();
+                currentController.a = 0;
             }
             if (Input.GetButtonDown("Fire2"))
             {
                 currentController.B();
+                currentController.b = 0;
             }
             else if (Input.GetButtonUp("Fire2"))
             {
@@ -39,6 +50,7 @@ public class PlayerManager : MonoBehaviour
             if (Input.GetButtonDown("Fire3"))
             {
                 currentController.C();
+                currentController.c = 0;
             }
         }
     }

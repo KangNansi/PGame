@@ -5,22 +5,27 @@ using System;
 public class Life : MonoBehaviour
 {
     public float maxLife;
-    private float currentLife;
-    
+    public float CurrentLife { get; private set; }
+
     public event Action onDie;
+    public event Action onHit;
+
+    public bool isInvicible = false;
 
     private void Start()
     {
-        currentLife = maxLife;
+        CurrentLife = maxLife;
     }
 
     public void Hit(float value)
     {
-        currentLife -= value;
-        if (currentLife <= 0)
+        if (isInvicible) return;
+        CurrentLife -= value;
+        if (CurrentLife <= 0)
         {
             onDie?.Invoke();
-            currentLife = 0;
+            CurrentLife = 0;
         }
+        onHit?.Invoke();
     }
 }

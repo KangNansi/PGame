@@ -2,34 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class StateMachine
+public class StateMachine<T> where T : State
 {
-    private State current;
+    public T Current { get; private set; }
 
-    public List<StateMachineTransition> transitions = new List<StateMachineTransition>();
+    public bool DebugMode { get; set; }
 
-    public void SetState(State state)
+    public List<StateMachineTransition<T>> transitions = new List<StateMachineTransition<T>>();
+
+    public void SetState(T state)
     {
-        if(current != null)
+        if(Current != null)
         {
-            current.End();
+            Current.End();
         }
-        current = state;
-        if(current != null)
+        
+        Current = state;
+        if(Current != null)
         {
-            current.Start();
+            if (DebugMode) Debug.Log(state.GetType());
+            Current.Start();
         }
     }
 
     public void Update()
     {
-        if(current != null)
+        if(Current != null)
         {
-            current.Update();
+            Current.Update();
 
-            if (!current.Running)
+            if (!Current.Running)
             {
-                var transition = transitions.Find(t => t.source == current && t.condition == null);
+                var transition = transitions.Find(t => t.source == Current && t.condition == null);
                 SetState(transition.target);
             }
             else
@@ -37,7 +41,7 @@ public class StateMachine
                 foreach (var transition in transitions)
                 {
                     if (transition.condition == null) continue;
-                    if (transition.source == current && transition.condition())
+                    if (transition.source == Current && transition.condition())
                     {
                         SetState(transition.target);
                         break;

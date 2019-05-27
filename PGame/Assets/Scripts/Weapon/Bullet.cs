@@ -28,10 +28,8 @@ public class Bullet : MonoBehaviour
         ParticleSystem particle = Instantiate(destroyParticle);
         particle.transform.position = transform.position;
         Destroy(gameObject);
-        Debug.Log(collision.gameObject.layer);
         if ((1<<collision.gameObject.layer & hitLayer.value) != 0)
         {
-            Debug.Log("Remove life");
             Life life = collision.GetComponent<Life>();
             if(life != null)
             {
