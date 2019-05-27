@@ -14,6 +14,11 @@ public class LifeBar : MonoBehaviour
     {
         life.onHit += Refresh;
 
+        for(int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+
         for (int i = 0; i < Mathf.RoundToInt(life.maxLife); i++)
         {
             HeartUI instance = Instantiate(heartPrefab, transform);

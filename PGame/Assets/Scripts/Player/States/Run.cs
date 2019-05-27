@@ -27,7 +27,8 @@ namespace PlayerStates
         {
             base.Update();
             isWalkingParam.SetBool(true);
-            body.velocity = new Vector2(h * speed, body.velocity.y);
+            float move = (h < -0.2 || h > 0.2) ? h : 0;
+            body.velocity = new Vector2(move * speed, body.velocity.y);
         }
 
         public override void End()

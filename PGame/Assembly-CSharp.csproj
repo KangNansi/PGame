@@ -72,12 +72,12 @@
     <Compile Include="Assets\Scripts\Life.cs" />
     <Compile Include="Assets\Scripts\Player\BasicController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Player\States\Air.cs" />
     <Compile Include="Assets\Scripts\Player\States\BaseState.cs" />
     <Compile Include="Assets\Scripts\Player\States\Hit.cs" />
     <Compile Include="Assets\Scripts\Player\States\Idle.cs" />
     <Compile Include="Assets\Scripts\Player\States\Run.cs" />
-    <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\HeartUI.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\LifeBar.cs" />
     <Compile Include="Assets\Scripts\Utils\AnimatorParameter.cs" />

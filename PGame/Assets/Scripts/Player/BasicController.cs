@@ -49,8 +49,8 @@ public class BasicController : PlayerController
         air = new Air(isFallingParam, body, speed);
         hit = new Hit(body, sprite, life, hitForce);
 
-        machine.transitions.Add(new StateMachineTransition<BaseState>(idle, run, () => Mathf.Abs(h) > 0.05f));
-        machine.transitions.Add(new StateMachineTransition<BaseState>(run, idle, () => Mathf.Abs(h) <= 0.05f));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(idle, run, () => Mathf.Abs(h) > 0.2f));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(run, idle, () => Mathf.Abs(h) <= 0.2f));
 
         machine.transitions.Add(new StateMachineTransition<BaseState>(idle, air, () => !ground.IsOverlapped));
         machine.transitions.Add(new StateMachineTransition<BaseState>(air, idle, () => ground.IsOverlapped && Mathf.Abs(h) <= 0.05f));
@@ -89,7 +89,7 @@ public class BasicController : PlayerController
             machine.Current.h = h;
             if (machine.Current.ControlFacingDirection)
             {
-                facingDirection = h < 0 ? -1 : h > 0 ? 1 : facingDirection;
+                facingDirection = h < -0.2 ? -1 : h > 0.2 ? 1 : facingDirection;
                 transform.localScale = new Vector3(facingDirection, 1, 1);
             }
             machine.Current.facingDirection = facingDirection;
@@ -133,7 +133,12 @@ public class BasicController : PlayerController
 
     public override void C()
     {
-        weapon.Shoot();
+        weapon.Activate();
+    }
+
+    public override void CUp()
+    {
+        weapon.Deactivate();
     }
 
     private void OnValidate()

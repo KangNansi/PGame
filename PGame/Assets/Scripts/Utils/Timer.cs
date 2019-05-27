@@ -29,4 +29,10 @@ public struct Timer
     {
         stopped = true;
     }
+
+    public static Timer operator-(Timer timer, float value)
+    {
+        timer.last += value;
+        return timer;
+    }
 }
