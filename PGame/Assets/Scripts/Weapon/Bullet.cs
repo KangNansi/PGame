@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
             Life life = collision.GetComponent<Life>();
             if(life != null)
             {
-                life.Hit(hitValue);
+                life.Hit(gameObject, hitValue);
             }
         }
     }

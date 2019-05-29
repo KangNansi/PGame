@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Player\States\Air.cs" />
     <Compile Include="Assets\Scripts\Player\States\BaseState.cs" />
+    <Compile Include="Assets\Scripts\Player\States\Dash.cs" />
     <Compile Include="Assets\Scripts\Player\States\Hit.cs" />
     <Compile Include="Assets\Scripts\Player\States\Idle.cs" />
     <Compile Include="Assets\Scripts\Player\States\Run.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Scripts\UI\HUD\LifeBar.cs" />
     <Compile Include="Assets\Scripts\Utils\AnimatorParameter.cs" />
     <Compile Include="Assets\Scripts\Utils\FloatRange.cs" />
+    <Compile Include="Assets\Scripts\Utils\Interaction\ColliderEvent.cs" />
     <Compile Include="Assets\Scripts\Utils\Interaction\Detector2D.cs" />
     <Compile Include="Assets\Scripts\Utils\Interaction\Hitter.cs" />
     <Compile Include="Assets\Scripts\Utils\Interaction\PointDetector2D.cs" />
@@ -97,8 +99,9 @@
     <Compile Include="Assets\Scripts\Utils\StateMachine\State.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Utils\StateMachine\StateMachineTransition.cs" />
-    <Compile Include="Assets\Scripts\Utils\TimeManager.cs" />
-    <Compile Include="Assets\Scripts\Utils\Timer.cs" />
+    <Compile Include="Assets\Scripts\Utils\Time\Cooldown.cs" />
+    <Compile Include="Assets\Scripts\Utils\Time\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\Utils\Time\Timer.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Scripts\Weapon\Weapon.cs" />
     <Reference Include="Unity.Timeline.Editor">

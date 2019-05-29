@@ -5,6 +5,8 @@ public class Weapon : MonoBehaviour
 {
     public Bullet bulletPrefab;
 
+    public Transform shootOrigin;
+
     public float shootFrequency;
 
     private Timer timer;
@@ -30,8 +32,8 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         Bullet bullet = Instantiate(bulletPrefab);
-        bullet.direction = Mathf.Sign(transform.lossyScale.x) * Vector2.right;
-        bullet.transform.position = transform.position;
+        bullet.direction = transform.lossyScale.x * shootOrigin.transform.right;
+        bullet.transform.position = shootOrigin.position;
     }
 
     private void Update()

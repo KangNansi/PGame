@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class PlayerController : MonoBehaviour
 {
     protected float h, v;
+    protected float h2, v2;
 
     [HideInInspector, NonSerialized]
     public float a;
@@ -21,6 +22,12 @@ public abstract class PlayerController : MonoBehaviour
     {
         this.h = h;
         this.v = v;
+    }
+
+    public void SetAxis2(float h, float v)
+    {
+        this.h2 = h;
+        this.v2 = v;
     }
 
     public virtual void A() { }

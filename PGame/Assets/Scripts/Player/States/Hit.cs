@@ -26,6 +26,7 @@ namespace PlayerStates
             this.life = life;
             this.force = force;
             this.CanJump = false;
+            this.CanDash = false;
         }
 
         public override void Start()

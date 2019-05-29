@@ -36011,11 +36011,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 850191375}
     m_Modifications:
-    - target: {fileID: 9056566998977745696, guid: 6cf915c826e36e14e91898579eb1c1b9,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueTree (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6603752775327938822, guid: 6cf915c826e36e14e91898579eb1c1b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36085,6 +36080,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056566998977745696, guid: 6cf915c826e36e14e91898579eb1c1b9,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueTree (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf915c826e36e14e91898579eb1c1b9, type: 3}
@@ -36424,11 +36424,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518558274}
     m_Modifications:
-    - target: {fileID: 7293186545964079137, guid: 11277807abe2b7e42878c3340026b55f,
-        type: 3}
-      propertyPath: m_Name
-      value: MaskedShooter
-      objectReference: {fileID: 0}
     - target: {fileID: 2517169710174401977, guid: 11277807abe2b7e42878c3340026b55f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36483,6 +36478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293186545964079137, guid: 11277807abe2b7e42878c3340026b55f,
+        type: 3}
+      propertyPath: m_Name
+      value: MaskedShooter
       objectReference: {fileID: 0}
     - target: {fileID: 2261436225941796441, guid: 11277807abe2b7e42878c3340026b55f,
         type: 3}
@@ -36816,6 +36816,11 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8804265368403266485, guid: 210784c90339d0941aee5b7bbf45eef9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 210784c90339d0941aee5b7bbf45eef9, type: 3}
 --- !u!1001 &8922370431203453563
@@ -36825,11 +36830,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 850191375}
     m_Modifications:
-    - target: {fileID: 9056566998977745696, guid: 6cf915c826e36e14e91898579eb1c1b9,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueTree
-      objectReference: {fileID: 0}
     - target: {fileID: 6603752775327938822, guid: 6cf915c826e36e14e91898579eb1c1b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36884,6 +36884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9056566998977745696, guid: 6cf915c826e36e14e91898579eb1c1b9,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueTree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf915c826e36e14e91898579eb1c1b9, type: 3}

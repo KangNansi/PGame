@@ -2,6 +2,10 @@
 using System.Collections;
 using System;
 
+public class LifeBehaviour {
+    public Action onHit;
+}
+
 public class Life : MonoBehaviour
 {
     public float maxLife;
@@ -12,13 +16,18 @@ public class Life : MonoBehaviour
 
     public bool isInvicible = false;
 
+    public LayerMask invicibilityLayer { get; set; }
+
     private void Start()
     {
         CurrentLife = maxLife;
     }
 
-    public void Hit(float value)
+    public void Hit(GameObject source, float value)
     {
+        
+
+
         if (isInvicible) return;
         CurrentLife -= value;
         if (CurrentLife <= 0)

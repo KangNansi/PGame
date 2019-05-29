@@ -13,7 +13,7 @@ public class Hitter : MonoBehaviour
             Life life = collision.GetComponent<Life>();
             if(life != null)
             {
-                life.Hit(damage);
+                life.Hit(gameObject, damage);
             }
         }
     }

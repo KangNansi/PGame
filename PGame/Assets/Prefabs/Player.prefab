@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1657607470767213759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1155086112878163847}
+  m_Layer: 9
+  m_Name: ShootOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1155086112878163847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657607470767213759}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.475, y: 0.011, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8804265369688888322}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8804265368403266485
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8804265368403266484}
   - component: {fileID: 8804265368403266483}
+  - component: {fileID: 5958960490398939055}
   m_Layer: 13
   m_Name: Roll
   m_TagString: Untagged
@@ -47,6 +78,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3088983
+--- !u!114 &5958960490398939055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804265368403266485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d385ebd505874a4d87a7372b72e3c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 17408
 --- !u!1 &8804265368548276700
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +194,10 @@ MonoBehaviour:
   body: {fileID: 8804265368947010186}
   sprite: {fileID: 8804265369071905276}
   ground: {fileID: 4325584842707206236}
+  rollCollider: {fileID: 5958960490398939055}
+  entityLayer:
+    serializedVersion: 2
+    m_Bits: 8192
   weapon: {fileID: 1205502795194220702}
   life: {fileID: 2895199756250447631}
   animator: {fileID: 8804265368947010184}
@@ -155,11 +205,15 @@ MonoBehaviour:
     name: IsWalking
   isFallingParam:
     name: IsFalling
+  rollParam:
+    name: IsRolling
   speed: 5
   jumpForce: 5
   jumpAddedForce: 40
   jumpAddTime: 0.4
-  hitForce: {x: 0, y: 0}
+  hitForce: {x: 4, y: 7}
+  dashForce: 17
+  dashDuration: 0.5
 --- !u!50 &8804265368947010186
 Rigidbody2D:
   serializedVersion: 4
@@ -347,6 +401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8804265369688888322}
   - component: {fileID: 1205502795194220702}
+  - component: {fileID: 8047559016733145111}
   m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
@@ -361,13 +416,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8804265369688888323}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.011169814, w: 0.99993765}
+  m_LocalPosition: {x: 0.004, y: 0.007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1155086112878163847}
   m_Father: {fileID: 8804265368947010185}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.28}
 --- !u!114 &1205502795194220702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +438,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5863224776186750360, guid: 52edd6e9ac11dc2429c72af791efebf3,
     type: 3}
-  shootFrequency: 3
+  shootOrigin: {fileID: 1155086112878163847}
+  shootFrequency: 10
+--- !u!212 &8047559016733145111
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804265369688888323}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -3670988054410298928, guid: ccb35c227803bf74dbd6ca4b2d1169da,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &8846680023801116485
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +535,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0035432875, y: 0.085039616}
+  m_Offset: {x: -0.0070866346, y: 0.0531497}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -439,7 +546,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.53936857, y: 0.57480145}
+  m_Size: {x: 0.30550957, y: 0.2842493}
   m_EdgeRadius: 0
 --- !u!114 &2895199756250447631
 MonoBehaviour:
