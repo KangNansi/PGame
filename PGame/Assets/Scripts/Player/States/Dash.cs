@@ -22,7 +22,7 @@ namespace PlayerStates
             base.Start();
 
             controller.body.velocity = Vector2.zero;
-            controller.body.AddForce(controller.dashForce * direction, ForceMode2D.Impulse);
+            controller.body.AddForce(controller.dashForce * new Vector2(1 * facingDirection, 0.5f), ForceMode2D.Impulse);
             controller.rollParam.SetBool(true);
             timer.Restart();
         }
@@ -31,7 +31,7 @@ namespace PlayerStates
         {
             base.Update();
             controller.sprite.transform.localRotation *= Quaternion.Euler(0, 0, 90f * -25f * Time.deltaTime);
-            if(timer.Elapsed > controller.dashDuration)
+            if(false)//timer.Elapsed > controller.dashDuration)
             {
                 Stop();
             }

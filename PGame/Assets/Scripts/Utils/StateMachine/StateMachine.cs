@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class StateMachine<T> where T : State
 {
@@ -9,6 +10,7 @@ public class StateMachine<T> where T : State
     public bool DebugMode { get; set; }
 
     public List<StateMachineTransition<T>> transitions = new List<StateMachineTransition<T>>();
+    public event Action<T> setup;
 
     public void SetState(T state)
     {
@@ -21,6 +23,7 @@ public class StateMachine<T> where T : State
         if(Current != null)
         {
             if (DebugMode) Debug.Log(state.GetType());
+            setup?.Invoke(Current);
             Current.Start();
         }
     }

@@ -32,6 +32,7 @@ public class BasicController : PlayerController
     public Vector2 hitForce;
     public float dashForce;
     public float dashDuration;
+    public LayerMask hitLayer;
 
     private StateMachine<BaseState> machine;
 
@@ -43,10 +44,17 @@ public class BasicController : PlayerController
     Dash dash;
 
     private float facingDirection = 1;
+    private bool canJump = true;
     private Timer jumpTimer;
 
     private bool canDash = true;
     private Timer dashTimer;
+
+    private Transform target;
+    public LayerMask targetLayer;
+    public float targetRadius;
+    public float minDot;
+    public RectTransform targetHUD;
 
     private void Initialize()
     {
@@ -62,8 +70,8 @@ public class BasicController : PlayerController
         hit = new Hit(body, sprite, life, hitForce);
         dash = new Dash(this);
 
-        machine.transitions.Add(new StateMachineTransition<BaseState>(idle, run, () => Mathf.Abs(h) > 0.2f));
-        machine.transitions.Add(new StateMachineTransition<BaseState>(run, idle, () => Mathf.Abs(h) <= 0.2f));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(idle, run, () => Mathf.Abs(h) > 0.2f && !weapon.IsShooting));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(run, idle, () => Mathf.Abs(h) <= 0.2f || weapon.IsShooting));
 
         machine.transitions.Add(new StateMachineTransition<BaseState>(idle, air, () => !ground.IsOverlapped));
         machine.transitions.Add(new StateMachineTransition<BaseState>(air, idle, () => ground.IsOverlapped && Mathf.Abs(h) <= 0.05f));
@@ -73,16 +81,25 @@ public class BasicController : PlayerController
         machine.transitions.Add(new StateMachineTransition<BaseState>(hit, idle, () => ground.IsOverlapped && hit.Elapsed > 0.5f));
 
         machine.transitions.Add(new StateMachineTransition<BaseState>(dash, idle, null));
+        machine.transitions.Add(new StateMachineTransition<BaseState>(dash, idle, () => ground.IsOverlapped && dashTimer.Elapsed > 0.2f));
 
         machine.SetState(idle);
 
         life.onHit += onHit;
+        Life.anyHit += (layer) =>
+        {
+            if ((hitLayer &  1 << layer) != 0)
+            {
+                canJump = true;
+            }
+        };
         rollCollider.onEnter += onRollCollide;
+        machine.setup += SetupScript;
     }
 
     private void onRollCollide(Collision2D collision)
     {
-        if(machine.Current == dash)
+        if(machine.Current == dash && (entityLayer & 1 << collision.gameObject.layer) != 0)
         {
             Vector2 bestNormal = Vector2.zero;
             float bestDot = 1;
@@ -125,18 +142,25 @@ public class BasicController : PlayerController
         Check();
     }
 
-    private void Update()
+    private void SetupScript(BaseState state)
     {
-        if (machine.Current != null)
+        if (state != null)
         {
-            machine.Current.h = h;
-            if (machine.Current.ControlFacingDirection)
+            state.h = h;
+            if (state.ControlFacingDirection)
             {
                 facingDirection = h < -0.2 ? -1 : h > 0.2 ? 1 : facingDirection;
-                transform.localScale = new Vector3(facingDirection, 1, 1);
             }
-            machine.Current.facingDirection = facingDirection;
+            state.facingDirection = facingDirection;
         }
+    }
+
+    private void Update()
+    {
+        UpdateTarget();
+
+        SetupScript(machine.Current);
+        transform.localScale = new Vector3(facingDirection, 1, 1);
         machine.Update();
 
         // Weapon Direction control
@@ -154,6 +178,35 @@ public class BasicController : PlayerController
         {
             canDash = true;
         }
+        if (!canJump && ground.IsOverlapped && jumpTimer.Elapsed > 0.4f)
+        {
+            canJump = true;
+        }
+    }
+
+    private void UpdateTarget() {
+        Vector2 direction = new Vector2(h, v);
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, targetRadius, targetLayer);
+        float maxDot = 0;
+        target = null;
+        for(int i = 0; i < inRange.Length; i++)
+        {
+            float dot = Vector2.Dot((inRange[i].transform.position - transform.position).normalized, direction);
+            if(dot > Mathf.Max(maxDot,minDot))
+            {
+                maxDot = dot;
+                target = inRange[i].transform;
+            }
+        }
+        if(target != null)
+        {
+            targetHUD.gameObject.SetActive(true);
+            targetHUD.position = Camera.main.WorldToScreenPoint(target.position);
+        }
+        else
+        {
+            targetHUD.gameObject.SetActive(false);
+        }
     }
 
     private void FixedUpdate()
@@ -165,9 +218,10 @@ public class BasicController : PlayerController
             {
                 body.AddForce(Vector2.up * jumpAddedForce * (jumpAddTime - jumpTimer.Elapsed), ForceMode2D.Force);
             }
-            else if (ground.LastOverlapped < 0.2f && jumpTimer.Elapsed > 0.4f && a < 0.2f)
+            else if (canJump && jumpTimer.Elapsed > 0.4f && a < 0.2f)
             {
                 Jump();
+                canJump = false;
             }
         }
     }
@@ -175,6 +229,7 @@ public class BasicController : PlayerController
     private void Jump()
     {
         Vector2 direction = new Vector2(h, v).normalized;
+        body.velocity = Vector2.zero;
         body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         jumpTimer.Restart();
     }

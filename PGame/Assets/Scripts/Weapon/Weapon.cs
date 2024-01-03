@@ -11,6 +11,11 @@ public class Weapon : MonoBehaviour
 
     private Timer timer;
     private bool activated = false;
+    public bool IsShooting {
+        get {
+            return activated;
+        }
+    }
 
     public void Activate()
     {

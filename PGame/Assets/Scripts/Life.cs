@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.Events;
 
 public class LifeBehaviour {
     public Action onHit;
@@ -13,6 +14,9 @@ public class Life : MonoBehaviour
 
     public event Action onDie;
     public event Action onHit;
+    public UnityEvent onDieEvent;
+
+    public static Action<LayerMask> anyHit;
 
     public bool isInvicible = false;
 
@@ -25,16 +29,15 @@ public class Life : MonoBehaviour
 
     public void Hit(GameObject source, float value)
     {
-        
-
-
         if (isInvicible) return;
         CurrentLife -= value;
         if (CurrentLife <= 0)
         {
+            onDieEvent?.Invoke();
             onDie?.Invoke();
             CurrentLife = 0;
         }
         onHit?.Invoke();
+        anyHit?.Invoke(source.layer);
     }
 }

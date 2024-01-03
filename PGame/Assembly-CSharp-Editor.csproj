@@ -61,10 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Editor\Level\FollowCameraEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\Level\PrefabPainter.cs" />
     <Compile Include="Assets\Scripts\Editor\Level\RandomTileEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\Level\Tiles\RuleTileEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\PropertyDrawers\FloatRangeDrawer.cs" />
     <Compile Include="Assets\Scripts\Editor\Utils\EditorBase.cs" />
+    <Compile Include="Assets\Scripts\Editor\Utils\EditorPrefsGUI\EditorPrefsGUI.cs" />
+    <Compile Include="Assets\Scripts\Editor\Utils\EditorPrefsGUI\FolderPref.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/EvilL/OneDrive/Documents/PGame/PGame/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
